@@ -1,3 +1,0 @@
-Hey This is test file
-test 2
-testing git push through CLI
