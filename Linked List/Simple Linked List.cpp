@@ -43,6 +43,9 @@ void display()
 }
 void remdup()
 {
+	struct node *c=start;
+	struct node *n;
+	
 	
 }
 void sort()
@@ -68,7 +71,6 @@ void sort()
 }
 void reverse()
 {
-	
 	struct node *current,*prev=NULL,*after;
 	current=start;
 	while(current)
