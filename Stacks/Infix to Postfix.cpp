@@ -1,42 +1,47 @@
 #include<stdio.h>
-#include<stdlib.h>
 #include<ctype.h>
-int stack[100];
-int top=-1;
+
+char stack[100];
+int top = -1;
+
 void push(char x)
 {
-stack[++top] = x;
+    stack[++top] = x;
 }
+
 char pop()
 {
-return stack[top--];
+    if(top == -1)
+        return -1;
+    else
+        return stack[top--];
 }
-int isop(char ch)
+
+int priority(char x)
 {
-	if(ch=='^'||ch=='*'||ch=='/'||ch=='+'||ch=='-')
-	return 1;
-	else 
-	return 0;
+    if(x == '(')
+        return 0;
+    if(x == '+' || x == '-')
+        return 1;
+    if(x == '*' || x == '/')
+        return 2;
+    return 0;
 }
-int pre(char ch)
+
+int main()
 {
-	if(ch=='^')
-	return 3;
-	else if(ch=='*'||ch=='/')
-	return 2;
-	else if(ch=='+'||ch=='-')
-	return 1;
-	else
-	return 0;
-}
-void ptoin(char i[])
-{
-	char x;
-	char *e;
-	e=i;
-	if(isalnum(*e))
-	printf("%c",*e);
-	 else if(*e == '(')
+    char exp[100];
+    char *e, x;
+    printf("Enter the expression : ");
+    scanf("%s",exp);
+    printf("\n");
+    e = exp;
+    
+    while(*e != '\0')
+    {
+        if(isalnum(*e))
+            printf("%c ",*e);
+        else if(*e == '(')
             push(*e);
         else if(*e == ')')
         {
@@ -45,21 +50,15 @@ void ptoin(char i[])
         }
         else
         {
-            while(pre(stack[top]) >= pre(*e))
+            while(priority(stack[top]) >= priority(*e))
                 printf("%c ",pop());
             push(*e);
         }
         e++;
+    }
+    
     while(top != -1)
     {
         printf("%c ",pop());
-    }
-}
-int main()
-{
-	char i[50];
-	printf("enter your infix expression \n");
-	gets(i);
-	ptoin(i);
-	return 0;
+    }return 0;
 }

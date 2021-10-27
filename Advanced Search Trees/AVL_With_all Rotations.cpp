@@ -69,12 +69,13 @@ struct node * LLrotation(struct node *p)
   void insert(int x)
   {
   	struct node *t,*p=root,*r;
-  	if(p==NULL)
-	{
- 	t=(struct node *)malloc(sizeof(struct node));
+  	t=(struct node *)malloc(sizeof(struct node));
  	t->data=x;
  	t->height=1;
  	t->lc=t->rc=NULL;
+  	if(root==NULL)
+	{
+		root=t;
    }
    while(p)
    {
