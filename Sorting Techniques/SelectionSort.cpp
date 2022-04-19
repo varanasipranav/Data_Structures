@@ -29,7 +29,7 @@ int main()
 	{
 	printf("enter the %d element in the array \n ",i);
 	scanf("%d",&arr[i]);
-}
+	}
 selectionSort(arr,n);
 for(i=0;i<n;i++)
 printf("%d \n",arr[i]);

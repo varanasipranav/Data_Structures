@@ -16,15 +16,15 @@ int main()
 	int n1,n2,n3,num;
 	char exp[50],*e;
 	printf("Enter the expression \n");
-	gets(exp);
+	scanf("%s",&exp);
 	e=exp;
 	while(*e!='\0')
 	{
 		if(isdigit(*e))
 		{
-		num=*e-48;
-		push(num);
-	}
+			num=*e-48;
+			push(num);
+		}
 	else
 	{
 		n1=pop();
